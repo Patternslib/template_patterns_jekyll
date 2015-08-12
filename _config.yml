@@ -1,0 +1,31 @@
+title: Patterns
+author: Your Name Here
+baseurl: /
+domain: patterns.example.com
+media: /media
+markdown: kramdown
+permalink: /:title
+sass:
+  style: :compressed
+  load_paths:
+    - "_sass"
+    - "patternslib"
+    - "patternslib/_sass"
+exclude: 
+  - Gemfile
+  - Gemfile.lock
+  - config.codekit
+  - config.rb
+  - node_modules
+  - patternslib/src/bower_components
+  - patternslib/node_modules
+patterns:
+  - version: 2.0.9
+  - components:
+    - modal
+    - avatar
+    - equaliser
+    - grid
+  - basics: 
+    - reset
+    - clear-fix
