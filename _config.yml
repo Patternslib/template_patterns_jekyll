@@ -19,6 +19,9 @@ exclude:
   - node_modules
   - patternslib/src/bower_components
   - patternslib/node_modules
+  - Makefile
+  - README.md
+
 patterns:
   - version: 2.0.12
   - components:
