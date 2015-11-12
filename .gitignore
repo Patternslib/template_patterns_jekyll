@@ -8,3 +8,4 @@ npm-debug.log
 .bundle
 patternslib
 .jekyll-metadata
+Gemfile.lock
