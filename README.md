@@ -1,26 +1,10 @@
-# Patterns
+# Patterns Project Scaffold
 
-Patterns is a JavaScript library that enables designers to build rich
-interactive prototypes without the need for writing any JavaScript. All events
-are triggered by classes and other attributes in the HTML, without abusing the
-HTML as a programming language. Accessibility, SEO and well structured HTML are
-core values of Patterns.
-
-## Browser support
-
-Patterns aims to support at least the two latest major versions of all popular browsers.
-
-Currently that means:
-
-- Apple Safari 5+
-- Google Chrome 20+
-- Microsoft Internet Explorer 8+
-
-Other browser version may work too, but are not actively tested against.
-
-## Setup
+This scaffolding helps you to set up your own project using jekyll to generate html and sass and 
 
 ### Installing dependencies
+
+To 
 
 Prerequisites:
 
@@ -30,20 +14,11 @@ You can check node is present via:
 
     nodejs -v
 
-- jekyll > 1.5 install following the instructions on https://help.github.com/articles/using-jekyll-with-pages
+- Ruby > 2.0.0
 
-On ubuntu:
-
-    sudo apt-get install ruby1.9.3
+    sudo apt-get install ruby2
     sudo gem install bundler
 
-Now install jekyll itself:
-
-    git clone git@github.com:Patternslib/Patterns-site.git
-    cd Patterns-site
-    sudo bundle install
-
-[Bourbon](http://bourbon.io) and [compass](http://compass-style.org) will be installed as part of `bundle install` .
 
 
 ## Integration with the Patterns repo
@@ -53,7 +28,7 @@ which means that we need to have a git checkout of it in Patterns-site.
 
 To automatically have this repo checked out and updated, simply run:
 
-    make designerhappy
+    make all
 
 Patterns will then be checked out into ./patternslib and the files for the
 individual patterns (index.html, scss, documentation.md etc.) are located in ./patternslib/src/pat/${pattern name}/
@@ -63,11 +38,11 @@ checkout, you can also commit and push your changes to Patterns.
 
 ### Generating the site
 
-Running ``make designerhappy`` will generate and serve the site.
+Running ``make all`` will generate and serve the site.
 
 Otherwise you can also run:
 
-    bundle exec jekyll serve --watch --baseurl ""
+    bundle exec jekyll serve 
 
 ### How to include the demos and docs for the individual patterns
 
