@@ -1,7 +1,7 @@
-title: Patterns
+title: My Patterns Jekyll Project
 author: Your Name Here
 baseurl: /
-domain: patterns.example.com
+domain: myproject.example.com
 media: /media
 markdown: kramdown
 permalink: /:title
@@ -20,7 +20,7 @@ exclude:
   - patternslib/src/bower_components
   - patternslib/node_modules
 patterns:
-  - version: 2.0.9
+  - version: 2.0.12
   - components:
     - modal
     - avatar
