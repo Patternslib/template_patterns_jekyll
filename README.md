@@ -1,3 +1,3 @@
 # Project scaffold
 
-Full documentation may be found in the Wiki of this project.
+Full documentation may be found in the [Wiki](https://github.com/Patternslib/project-scaffold/wiki) of this project.
