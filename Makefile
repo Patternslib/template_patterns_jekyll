@@ -42,7 +42,9 @@ patternslib::
 	fi;
 
 bundle bundle.js: $(GENERATED) $(SOURCES) build.js stamp-bower patternslib
+	mkdir -p bundles
 	node_modules/.bin/r.js -o build.js
+	node_modules/.bin/r.js -o build.js optimize=uglify out=bundles/bundle.min.js
 
 src/lib/depends_parse.js: patternslib/src/lib/depends_parse.pegjs stamp-npm
 	$(PEGJS) $<
@@ -60,8 +62,6 @@ jekyll-serve:: stamp-bundler   ## run jekyll, serve and watch
 
 jekyll-serve-blank:: stamp-bundler  ## run jekyll, serve and watch (ignoring the baseurl and host settings)
 	bundle exec jekyll serve  --baseurl "" --host "0.0.0.0" 
-
-compile-all:: patternslib bundle jekyll-serve-blank  ## make all necessary steps and run jekyll
 
 
 

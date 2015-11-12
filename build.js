@@ -1,5 +1,5 @@
 ({
-    out: "bundle.js",
+    out: "bundles/bundle.js",
     include: ["../bundle-config"],
     insertRequire: ["../bundle-config"],
     name: "almond",

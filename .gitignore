@@ -12,4 +12,4 @@ Gemfile.lock
 stamp-bower
 stamp-npm
 stamp-bundler
-bundle.js
+bundles/
