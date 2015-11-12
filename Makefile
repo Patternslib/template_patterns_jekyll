@@ -1,28 +1,70 @@
+BOWER 		?= node_modules/.bin/bower
+JSHINT 		?= node_modules/.bin/jshint
+PEGJS		?= node_modules/.bin/pegjs
+PHANTOMJS	?= node_modules/.bin/phantomjs
+HTTPSERVE   ?= node_modules/.bin/http-server
+BUNDLE      ?= ./.bundle/bin/bundle
 SASS        ?= bundle
+
+SOURCES		= $(wildcard src/*.js) $(wildcard src/pat/*.js) $(wildcard src/pat/calendar/*.js) $(wildcard src/lib/*.js)
+BUNDLES		= bundles/patterns.js bundles/patterns.min.js
+
+GENERATED	= patternslib/src/lib/depends_parse.js
+
+
+########################################################################
+## Install dependencies
+
+stamp-npm: package.json
+	npm install
+	touch stamp-npm
+
+stamp-bower: stamp-npm bower.json
+	$(BOWER) install
+	touch stamp-bower
+
+stamp-bundler:
+	mkdir -p .bundle
+	gem install --user bundler --bindir .bundle/bin
+	$(BUNDLE) install --path .bundle --binstubs .bundle/bin
+	touch stamp-bundler
+
+clean::
+	rm -f stamp-npm stamp-bower
+	rm -rf node_modules src/bower_components
+
+########################################################################
+## Build JS
+
+patternslib::  
+	@if [ ! -d "patternslib" ]; then \
+		git clone https://github.com/Patternslib/Patterns.git patternslib; \
+	fi;
+
+bundle bundle.js: $(GENERATED) $(SOURCES) build.js stamp-bower patternslib
+	node_modules/.bin/r.js -o build.js
+
+src/lib/depends_parse.js: patternslib/src/lib/depends_parse.pegjs stamp-npm
+	$(PEGJS) $<
+	sed -i~ -e '1s/.*/define(function() {/' -e '$$s/()//' $@ || rm -f $@
+
+
 
 
 # Add help text after each target name starting with ' \#\# '
 help:
 	@grep " ## " $(MAKEFILE_LIST) | grep -v MAKEFILE_LIST | sed 's/\([^:]*\).*##/\1    /'
 
-patternslib::  ## Get patternslib and build it
-	@if [ ! -d "patternslib" ]; then \
-		git clone https://github.com/Patternslib/Patterns.git patternslib; \
-		cd patternslib && npm install && ./node_modules/.bin/bower update && cd ..; \
-	 fi;
-
-bundle patternslib/bundle.js:  ## update the patternslib js bundle
-	@cd patternslib && make bundle && cd ..;
-
-bundle_install:: 
-	bundle install --path .bundle
-
-jekyll-serve:: bundle_install  ## run jekyll, serve and watch
+jekyll-serve:: stamp-bundler   ## run jekyll, serve and watch
 	bundle exec jekyll serve
 
-jekyll-serve-blank:: bundle_install  ## run jekyll, serve and watch (ignoring the baseurl and host settings)
+jekyll-serve-blank:: stamp-bundler  ## run jekyll, serve and watch (ignoring the baseurl and host settings)
 	bundle exec jekyll serve  --baseurl "" --host "0.0.0.0" 
 
-all:: patternslib bundle jekyll-serve-blank  ## make all necessary steps and run jekyll
+compile-all:: patternslib bundle jekyll-serve-blank  ## make all necessary steps and run jekyll
 
-.PHONY: serve all clean jekyll-serve jekyll-serve-blank bundle patternslib help
+
+
+.PHONY: compile-all clean jekyll-serve jekyll-serve-blank bundle patternslib help
+
+

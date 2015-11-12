@@ -21,7 +21,13 @@ exclude:
   - patternslib/node_modules
   - Makefile
   - README.md
-
+  - bower.json
+  - main.js
+  - bundle-config.js
+  - src/
+  - stamp-bower
+  - stamp-npm
+  - stamp-bundler
 patterns:
   - version: 2.0.12
   - components:

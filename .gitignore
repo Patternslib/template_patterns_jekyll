@@ -9,3 +9,7 @@ npm-debug.log
 patternslib
 .jekyll-metadata
 Gemfile.lock
+stamp-bower
+stamp-npm
+stamp-bundler
+bundle.js
