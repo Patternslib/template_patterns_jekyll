@@ -41,7 +41,7 @@ patternslib::
 		git clone https://github.com/Patternslib/Patterns.git patternslib; \
 	fi;
 
-bundle bundle.js: $(GENERATED) $(SOURCES) build.js stamp-bower patternslib
+bundle bundle.js: patternslib $(GENERATED) $(SOURCES) build.js stamp-bower
 	mkdir -p bundles
 	node_modules/.bin/r.js -o build.js
 	node_modules/.bin/r.js -o build.js optimize=uglify out=bundles/bundle.min.js
