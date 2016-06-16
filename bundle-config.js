@@ -6,10 +6,10 @@
  * only want to use selected patterns you will need to pull in the patterns
  * directly in your RequireJS configuration.
  */
-define([
+define('patterns', [
     // Don't ever outcomment these: 
-    "jquery",
     "pat-registry",
+    "jquery",
     "prefixfree",
 
     // You can outcomment from these if you don't need them
@@ -61,10 +61,11 @@ define([
     "pat-url",
     "pat-validation",
     "pat-zoom"
-], function($, registry) {
+], function(registry) {
     // Since we are in a non-AMD env, register a few useful utilites
-    $(function () {
-        registry.init();
-    });
+    window.patterns = registry;
+    registry.init();
     return registry;
 });
+
+require(['patterns']);
