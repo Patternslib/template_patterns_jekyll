@@ -6,13 +6,10 @@
  * only want to use selected patterns you will need to pull in the patterns
  * directly in your RequireJS configuration.
  */
-define('patterns', [
-    // Don't ever outcomment these: 
-    "pat-registry",
+define([
     "jquery",
+    "pat-registry",
     "prefixfree",
-
-    // You can outcomment from these if you don't need them
     "pat-ajax",
     "pat-autofocus",
     "pat-autoscale",
@@ -41,11 +38,11 @@ define('patterns', [
     "pat-input-change-events",
     "pat-legend",
     "pat-markdown",
-    "pat-masonry",
     "pat-menu",
     "pat-modal",
     "pat-navigation",
     "pat-notification",
+    "pat-masonry",
     "pat-placeholder",
     "pat-scroll",
     "pat-selectbox",
@@ -53,19 +50,25 @@ define('patterns', [
     "pat-slideshow-builder",
     "pat-sortable",
     "pat-stacks",
+    "pat-sticky",
     "pat-subform",
     "pat-switch",
     "pat-syntax-highlight",
+    "pat-tabs",
     "pat-toggle",
     "pat-tooltip",
     "pat-url",
     "pat-validation",
     "pat-zoom"
-], function(registry) {
+], function($, registry) {
     // Since we are in a non-AMD env, register a few useful utilites
-    window.patterns = registry;
-    registry.init();
+    var window = require("window");
+    window.jQuery = $;
+    require("imports-loader?this=>window!jquery.browser");
+
+    $(function () {
+        registry.init();
+    });
     return registry;
 });
 
-require(['patterns']);
