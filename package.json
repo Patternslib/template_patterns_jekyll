@@ -15,7 +15,7 @@
     "url": "https://github.com/url/to/your/project"
   },
   "dependencies": {
-    "patternslib": "git@github.com:Patternslib/Patterns.git"
+    "patternslib": "https://github.com/Patternslib/Patterns.git"
   },
   "devDependencies": {
     "generator-patternslib": "0.2.1",
