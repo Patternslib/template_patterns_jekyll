@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 const path = require('path');
-const UglifyJsPlugin = require('webpack-uglify-js-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 var baseConfig = require(path.resolve(__dirname, 'node_modules/patternslib/webpack/base.config.js'));
 
@@ -27,17 +27,10 @@ module.exports = merge(baseConfig, {
     },
     plugins: [
         new UglifyJsPlugin({
-            cacheFolder: path.resolve(__dirname, '../cache/'),
-            debug: true,
+            cache: path.resolve(__dirname, '../cache/'),
             include: /\.min\.js$/,
-            minimize: true,
             sourceMap: true,
-            output: {
-              comments: false
-            },
-            compressor: {
-              warnings: false
-            }
+	    extractComments: false
         }),
     ],
 });

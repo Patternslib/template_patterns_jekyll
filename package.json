@@ -27,7 +27,7 @@
     "script-loader": "",
     "webpack": "",
     "webpack-merge": "",
-    "webpack-uglify-js-plugin": "",
+    "uglifyjs-webpack-plugin": "^1.1.2",
     "wrapper-webpack-plugin": ""
   },
   "scripts": {
