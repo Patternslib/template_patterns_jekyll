@@ -1,4 +1,4 @@
-title: My Patterns Jekyll Project
+title: My Patterns Jekyll Project (jQuery 3 / Webpack 4)
 author: Your Name Here
 baseurl: /
 domain: myproject.example.com
@@ -17,19 +17,18 @@ exclude:
   - config.codekit
   - config.rb
   - node_modules
-  - patternslib/src/bower_components
   - patternslib/node_modules
   - Makefile
   - README.md
-  - bower.json
-  - main.js
   - bundle-config.js
   - src/
-  - stamp-bower
   - stamp-npm
   - stamp-bundler
+  - package.json
+  - package-lock.json
+  - npmshrinkwrap.json
 patterns:
-  - version: 2.0.12
+  - version: 4.0.0
   - components:
     - modal
     - avatar

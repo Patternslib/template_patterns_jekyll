@@ -6,10 +6,14 @@
  * only want to use selected patterns you will need to pull in the patterns
  * directly in your RequireJS configuration.
  */
+
 define([
     "jquery",
     "pat-registry",
+    "moment",
+    "modernizr",
     "prefixfree",
+//    "push-kit",
     "pat-ajax",
     "pat-autofocus",
     "pat-autoscale",
@@ -19,14 +23,15 @@ define([
     "pat-bumper",
     "pat-calendar",
     "pat-carousel",
-    "pat-checkedflag",
+    "pat-carousel-legacy",
     "pat-checklist",
-    "pat-chosen",
     "pat-clone",
     "pat-collapsible",
     "pat-colour-picker",
     "pat-date-picker",
+    "pat-datetime-picker",
     "pat-depends",
+    "pat-display-time",
     "pat-equaliser",
     "pat-expandable",
     "pat-focus",
@@ -61,6 +66,7 @@ define([
     "pat-validation",
     "pat-zoom"
 ], function($, registry) {
+
     // Since we are in a non-AMD env, register a few useful utilites
     var window = require("window");
     window.jQuery = $;
@@ -71,4 +77,3 @@ define([
     });
     return registry;
 });
-

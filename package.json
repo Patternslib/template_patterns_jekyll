@@ -1,6 +1,6 @@
 {
   "name": "myproject",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "title": "My Project",
   "description": "My project description.",
   "author": {
@@ -18,20 +18,11 @@
     "patternslib": "https://github.com/Patternslib/Patterns.git"
   },
   "devDependencies": {
-    "generator-patternslib": "0.2.1",
-    "exports-loader": "",
-    "expose-loader": "",
-    "imports-loader": "",
-    "jasmine-core": "2.5.2",
-    "jasmine-webpack-plugin": "",
-    "script-loader": "",
-    "webpack": "",
-    "webpack-merge": "",
-    "uglifyjs-webpack-plugin": "^1.1.2",
-    "wrapper-webpack-plugin": ""
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --config webpack.config.js"
+    "start": "NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --open",
+    "build": "NODE_ENV=production webpack --config webpack/prod.config.js",
+    "showwhy": "NODE_ENV=production webpack --config webpack/prod.config.js --display-modules --display-reasons"
   },
   "homepage": "https://your.project.homepage.com",
   "docs": "http://your.docs/",
