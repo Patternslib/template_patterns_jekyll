@@ -6,6 +6,7 @@ var baseConfig = require(path.resolve(__dirname, 'node_modules/patternslib/webpa
 
 
 module.exports = merge(baseConfig, {
+    mode: "production",
     entry: {
         "bundle": path.resolve(__dirname, "bundle-config.js"),
         "bundle.min": path.resolve(__dirname, "bundle-config.js")

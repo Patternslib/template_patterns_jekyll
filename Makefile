@@ -36,7 +36,9 @@ jekyll-serve:: stamp-bundler   ## run jekyll, serve and watch
 jekyll-serve-blank:: stamp-bundler  ## run jekyll, serve and watch (ignoring the baseurl and host settings)
 	bundle exec jekyll serve  --baseurl "" --host "0.0.0.0" 
 
+all:: clean bundle jekyll-serve
 
-.PHONY: compile-all clean jekyll-serve jekyll-serve-blank bundle help
+
+.PHONY: all compile-all clean jekyll-serve jekyll-serve-blank bundle help
 
 

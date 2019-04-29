@@ -27,6 +27,7 @@ exclude:
   - package.json
   - package-lock.json
   - npmshrinkwrap.json
+  - webpack.config.js
 patterns:
   - version: 4.0.0
   - components:
