@@ -6,14 +6,14 @@ var baseConfig = require(path.resolve(__dirname, 'node_modules/patternslib/webpa
 
 
 module.exports = merge(baseConfig, {
-    mode: "production",
+    mode: 'production',
     entry: {
         "bundle": path.resolve(__dirname, "bundle-config.js"),
         "bundle.min": path.resolve(__dirname, "bundle-config.js")
     },
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, 'bundles')
+        path: path.resolve(__dirname, 'assets/script')
     },
     resolve: {
         // This line is important to supply the patternslib source files
@@ -23,15 +23,15 @@ module.exports = merge(baseConfig, {
                   'node_modules'
         ],
         alias: {
-            // put any additional patterns here
+            "pat-content-mirror": "pat-content-mirror/src/pat-content-mirror"
         }
     },
     plugins: [
         new UglifyJsPlugin({
-            cache: path.resolve(__dirname, '../cache/'),
-            include: /\.min\.js$/,
-            sourceMap: true,
-	    extractComments: false
+          cache: path.resolve(__dirname, '../cache/'),
+          include: /\.min\.js$/,
+          sourceMap: true,
+          extractComments: false
         }),
     ],
 });
